@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aria Blu — Школа вокала</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0a0a2a, #1c003d 50%, #310060);
+      --accent: #9f00ff;
+      --accent-hover: #b82eff;
+      --acid: #00ffcc;
+      --text-light: #ffffff;
+      --muted: rgba(255, 255, 255, 0.8);
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --radius: 18px;
+      --shadow: 8px 8px 0 #000;
+      --font-title: 'Oswald', sans-serif;
+      --font-body: 'Roboto', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-gradient);
+      color: var(--text-light);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    header .logo {
+      font-family: var(--font-title);
+      font-size: 1.8rem;
+      color: var(--acid);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    header nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      margin-left: 1.5rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    header nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--acid);
+      left: 0;
+      bottom: -5px;
+      transition: width 0.3s;
+    }
+
+    header nav a:hover {
+      color: var(--acid);
+    }
+
+    header nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 7rem 2rem;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-family: var(--font-title);
+      font-size: 3rem;
+      background: linear-gradient(90deg, var(--acid), var(--accent));
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 700;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: glowText 2s infinite alternate;
+    }
+
+    @keyframes glowText {
+      from {
+        text-shadow: 0 0 10px var(--acid), 0 0 20px var(--accent);
+      }
+
+      to {
+        text-shadow: 0 0 20px var(--acid), 0 0 40px var(--accent);
+      }
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      background: var(--accent);
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 0 15px var(--accent);
+      transition: all 0.3s;
+    }
+
+    .cta-btn:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 0 25px var(--accent-hover), 0 0 50px var(--accent);
+      transform: scale(1.05);
+    }
+
+    .features {
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .features h2 {
+      font-family: var(--font-title);
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(90deg, var(--accent), var(--acid));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: transform 0.4s, box-shadow 0.4s;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .feature-card .emoji {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .floating-icons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .floating-icons .icon {
+      position: absolute;
+      font-size: 24px;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .testimonial {
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial blockquote {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      font-size: 1.3rem;
+      font-style: italic;
+    }
+
+    .testimonial footer {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+
+    .final-cta {
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta h2 {
+      font-family: var(--font-title);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--acid), var(--accent));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .final-cta p {
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      background: #000;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer .social a {
+      color: #fff;
+      font-size: 1.6rem;
+      margin: 0 0.8rem;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    footer .social a:hover {
+      color: var(--acid);
+      text-shadow: 0 0 10px var(--acid);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">ARIA BLU</div>
+    <nav>
+      <a href="#hero">Главная</a>
+      <a href="#method">Метод</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <h1>Споем оперную арию с черничными пингвинами?</h1>
+    <p>Раскройте свой уникальный голос. Ваша ария ждет.</p>
+    <a href="#method" class="cta-btn">Начать петь!</a>
+    <div class="floating-icons" id="floating-icons"></div>
+  </section>
+
+  <section class="features" id="method">
+    <h2>Почему это работает?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="emoji">🎭</div>
+        <h3>Уникальность</h3>
+        <p>Мы подчеркиваем ваш тембр — не маскируем его. Авторские вокальные образы и упражнения активируют природный
+          резонанс.</p>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">🧊</div>
+        <h3>Свобода</h3>
+        <p>Сюрреалистичные задания снимают зажимы. Голос отвечает на игру — не на контроль.</p>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">🐧</div>
+        <h3>Дуэт</h3>
+        <p>Вы + педагог = композиторский дуэт. Записываем мини-арии и следим за прогрессом.</p>
+      </div>
+    </div>
+    <div class="floating-icons" id="floating-icons-features"></div>
+  </section>
+
+  <section class="testimonial" id="reviews">
+    <blockquote>«Я никогда не думал, что оперный вокал может быть таким... волшебным и несерьезным! Теперь я пою в душе
+      с целой колонией пингвинов!»<footer>— Имя, ученик</footer>
+    </blockquote>
+  </section>
+
+  <section class="final-cta">
+    <h2>Ваша партия уже готова.</h2>
+    <p>Присоединяйтесь к самому необычному хору в сети.</p>
+    <a href="#contacts" class="cta-btn">Записаться на пробный урок</a>
+  </section>
+
+  <footer id="contacts">
+    <p>ARIA BLU</p>
+    <p>Email: hello@ariablu.example | Тел.: +7 (900) 000-00-00</p>
+    <div class="social">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-spotify"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function createFloatingIcons(containerId, numIcons) {
+      const iconsArray = ['🐧', '🎵', '🎤'];
+      const container = document.getElementById(containerId);
+      const section = container.parentElement;
+      const ICON_SIZE = 24;
+      let iconData = [];
+
+      for (let i = 0; i < numIcons; i++) {
+        const icon = document.createElement('div');
+        icon.classList.add('icon');
+        icon.style.fontSize = ICON_SIZE + 'px';
+        icon.innerText = iconsArray[Math.floor(Math.random() * iconsArray.length)];
+        container.appendChild(icon);
+
+        const width = section.clientWidth;
+        const height = section.clientHeight;
+
+        const x = Math.random() * (width - ICON_SIZE);
+        const y = Math.random() * (height - ICON_SIZE);
+        const dx = (Math.random() - 0.5) * 2;
+        const dy = (Math.random() - 0.5) * 2;
+        const type = ['diagonal', 'sinX', 'sinY'][Math.floor(Math.random() * 3)];
+        const amplitude = 20 + Math.random() * 30;
+        const frequency = 0.01 + Math.random() * 0.02;
+        const phase = Math.random() * Math.PI * 2;
+
+        iconData.push({ el: icon, x, y, dx, dy, type, amplitude, frequency, phase, origX: x, origY: y });
+      }
+
+      function animate() {
+        const width = section.clientWidth;
+        const height = section.clientHeight;
+
+        iconData.forEach(icon => {
+          if (icon.type === 'diagonal') {
+            icon.x += icon.dx;
+            icon.y += icon.dy;
+          } else if (icon.type === 'sinX') {
+            icon.x += icon.dx;
+            icon.y = icon.origY + icon.amplitude * Math.sin(icon.frequency * icon.x + icon.phase);
+          } else if (icon.type === 'sinY') {
+            icon.y += icon.dy;
+            icon.x = icon.origX + icon.amplitude * Math.sin(icon.frequency * icon.y + icon.phase);
+          }
+
+          if (icon.x < 0 || icon.x > width - ICON_SIZE) icon.dx *= -1;
+          if (icon.y < 0 || icon.y > height - ICON_SIZE) icon.dy *= -1;
+
+          icon.el.style.left = icon.x + 'px';
+          icon.el.style.top = icon.y + 'px';
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    // Создаем иконки для hero и features
+    createFloatingIcons('floating-icons', 24);
+    createFloatingIcons('floating-icons-features', 24);
+  </script>
+
+</body>
+
+</html>
